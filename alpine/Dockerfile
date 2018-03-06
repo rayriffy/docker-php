@@ -1,9 +1,7 @@
 FROM alpine:3.7
 
-RUN apk update \
-    && apk upgrade \
-    && mkdir -p /etc/apk \
-    && apk add --no-cache --virtual --update \
+RUN mkdir -p /etc/apk \
+    && apk add --no-cache \
     php5 \
     php5-apcu \
     php5-bcmath \
