@@ -57,7 +57,7 @@ RUN apk update \
     && sed -i "s|;*post_max_size =.*|post_max_size = ${PHP_MAX_POST}|i" /etc/php5/php.ini \
     && sed -i "s|;*cgi.fix_pathinfo=.*|cgi.fix_pathinfo= 0|i" /etc/php5/php.ini \
     && ln -s /usr/bin/php5 /usr/bin/php \
-    && apk del tzdata \
+    && apk del tzdata curl \
     && rm -rf /var/cache/apk/* \
     && rm -rf /var/lib/apt/lists/* \
     && rm -rf /tmp/* 
