@@ -1,3 +1,3 @@
 FROM centos:centos6.9
 
-RUN yum update -y && yum install -y yum-utils ca-certificates curl sudo uglifyjs zip unzip git wget tar gcc gcc+ make nodejs npm https://dl.fedoraproject.org/pub/epel/epel-release-latest-6.noarch.rpm http://rpms.remirepo.net/enterprise/remi-release-6.rpm && yum-config-manager --enable remi-php56 && yum install -y php php-curl php-xml php-ldap php-cli php-common php-mysql php-mcrypt php-gd php-zip php-fileinfo php-json && yum clean all && rm -rf /var/cache/yum
+RUN yum update -y && yum install -y yum-utils ca-certificates curl uglifyjs zip unzip git wget tar gcc gcc+ make nodejs npm https://dl.fedoraproject.org/pub/epel/epel-release-latest-6.noarch.rpm http://rpms.remirepo.net/enterprise/remi-release-6.rpm && yum-config-manager --enable remi-php56 && yum install -y php php-curl php-xml php-ldap php-cli php-common php-mysql php-mcrypt php-gd php-zip php-fileinfo php-json && yum clean all && rm -rf /var/cache/yum
