@@ -1,7 +1,9 @@
 FROM alpine:3.7
 
-RUN mkdir -p /etc/apk \
-    && apk add --no-cache \
+RUN apk update \
+    && apk upgrade \
+    && mkdir -p /etc/apk \
+    && apk add --no-cache --virtual --update \
     php5 \
     php5-apcu \
     php5-bcmath \
@@ -17,7 +19,6 @@ RUN mkdir -p /etc/apk \
     php5-intl \
     php5-json \
     php5-mcrypt \
-    php5-memcache \
     php5-mysql \
     php5-mysqli \
     php5-openssl \
@@ -28,7 +29,6 @@ RUN mkdir -p /etc/apk \
     php5-phar \
     php5-posix \
     php5-soap \
-    php5-xcache \
     php5-xmlreader \
     php5-xmlrpc \
     php5-xsl \
