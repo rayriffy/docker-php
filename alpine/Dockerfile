@@ -3,11 +3,6 @@ FROM alpine:3.7
 RUN apk update \
     && apk upgrade \
     && mkdir -p /etc/apk \
-    # && echo "http://alpine.gliderlabs.com/alpine/edge/main" >> /etc/apk/repositories \
-    # && echo "http://alpine.gliderlabs.com/alpine/edge/community" >> /etc/apk/repositories \
-    && apk add --update tzdata \
-    && cp /usr/share/zoneinfo/${TIMEZONE} /etc/localtime \
-    && echo "${TIMEZONE}" > /etc/timezone \
     && apk add --no-cache --virtual --update \
     php5 \ 
     php5-apcu \ 
@@ -43,16 +38,6 @@ RUN apk update \
     php5-zlib \
     ca-certificates \
     openssh \
-    && echo "${TINI_SHA} /sbin/tini" | sha1sum -wc - \
-    && sed -i "s|;*memory_limit =.*|memory_limit = ${PHP_MEMORY_LIMIT}|i" /etc/php5/php.ini \
-    && sed -i "s|;*upload_max_filesize =.*|upload_max_filesize = ${MAX_UPLOAD}|i" /etc/php5/php.ini \
-    && sed -i "s|;*max_file_uploads =.*|max_file_uploads = ${PHP_MAX_FILE_UPLOAD}|i" /etc/php5/php.ini \
-    && sed -i "s|;*post_max_size =.*|post_max_size = ${PHP_MAX_POST}|i" /etc/php5/php.ini \
-    && sed -i "s|;*cgi.fix_pathinfo=.*|cgi.fix_pathinfo= 0|i" /etc/php5/php.ini \
-
-    # Clean up
-
-    && apk del tzdata \
     && rm -rf /var/cache/apk/* \
     && rm -rf /var/lib/apt/lists/* \
     && rm -rf /tmp/* 
