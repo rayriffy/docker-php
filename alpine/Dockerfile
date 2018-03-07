@@ -48,6 +48,7 @@ RUN apk update \
     ca-certificates \
     openssh \
     curl \
+    zip \
     && curl -fsSL https://github.com/krallin/tini/releases/download/${TINI_VERSION}/tini-static -o /sbin/tini && chmod +x /sbin/tini \
     && echo "${TINI_SHA}  /sbin/tini" | sha1sum -wc - \
     && sed -i "s|;*date.timezone =.*|date.timezone = ${TIMEZONE}|i" /etc/php5/php.ini \
